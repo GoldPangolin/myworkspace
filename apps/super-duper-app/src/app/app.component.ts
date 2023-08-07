@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { exampleProducts } from '@myworkspace/products';
 @Component({
   selector: 'myworkspace-root',
   templateUrl: './app.component.html',
@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'super-duper-app';
+  products = exampleProducts;
 }
