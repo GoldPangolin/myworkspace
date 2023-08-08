@@ -16,7 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@myworkspace/common-ui": ["libs/common-ui/src/index.ts"],
-      "@myworkspace/products": ["libs/products/src/index.ts"]
+      "@myworkspace/mock-data": ["libs/mock-data/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

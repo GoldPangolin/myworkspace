@@ -1,17 +1,17 @@
 {
-  "name": "products",
+  "name": "mock-data",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/products/src",
+  "sourceRoot": "libs/mock-data/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/products",
-        "main": "libs/products/src/index.ts",
-        "tsConfig": "libs/products/tsconfig.lib.json",
-        "assets": ["libs/products/*.md"]
+        "outputPath": "dist/libs/mock-data",
+        "main": "libs/mock-data/src/index.ts",
+        "tsConfig": "libs/mock-data/tsconfig.lib.json",
+        "assets": ["libs/mock-data/*.md"]
       }
     },
     "lint": {
@@ -19,8 +19,8 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "libs/products/**/*.ts",
-          "libs/products/package.json"
+          "libs/mock-data/**/*.ts",
+          "libs/mock-data/package.json"
         ]
       }
     },
@@ -28,7 +28,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/products/jest.config.ts",
+        "jestConfig": "libs/mock-data/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { exampleProducts } from '@myworkspace/products';
+import { exampleProducts, tree } from '@myworkspace/mock-data';
 @Component({
   selector: 'myworkspace-root',
   templateUrl: './app.component.html',
@@ -8,4 +8,5 @@ import { exampleProducts } from '@myworkspace/products';
 export class AppComponent {
   title = 'super-duper-app';
   products = exampleProducts;
+  testTree = tree;
 }
