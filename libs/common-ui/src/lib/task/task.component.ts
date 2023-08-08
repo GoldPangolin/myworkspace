@@ -34,14 +34,14 @@ import { Task } from './task.model';
           placeholder="Input title"
         />
       </label>
-      <button
+      <!-- <button
         *ngIf="task?.state !== 'TASK_ARCHIVED'"
         class="pin-button"
         [attr.aria-label]="'pinTask-' + task?.id"
         (click)="onPin(task?.id)"
       >
         <span class="icon-star"></span>
-      </button>
+      </button> -->
     </div>
   `,
 })
