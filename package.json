@@ -2,7 +2,9 @@
   "name": "@myworkspace/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~16.1.0",
@@ -51,6 +53,7 @@
     "@types/node": "18.7.1",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "^5.60.1",
+    "chromatic": "^6.21.0",
     "cypress": "^12.16.0",
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
