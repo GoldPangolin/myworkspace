@@ -3,7 +3,6 @@ import { TreeComponent } from './tree.component';
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import { TreeModule } from './tree.module';
-import { NodeToggleDirective } from './tree.directive';
 import { CommonModule } from '@angular/common';
 
 const meta: Meta<TreeComponent> =  {
