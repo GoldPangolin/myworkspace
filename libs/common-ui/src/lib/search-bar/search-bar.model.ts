@@ -39,7 +39,8 @@ export interface TypeAheadResult {
     expandable?: boolean;
     expandableContent?: TemplateRef<unknown>;
     expandableContentText?: string;
-    isExpanded: boolean;
+    isExpanded?: boolean;
     relevanceScore?: number;
     additionalFields?: any[];
 }
+

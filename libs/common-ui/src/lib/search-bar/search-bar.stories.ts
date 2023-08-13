@@ -1,5 +1,5 @@
 import { SelectModule } from './../select/select.module';
-import { SearchConfig } from './search-bar.model';
+import { SearchConfig, TypeAheadResult } from './search-bar.model';
 import { SearchBarModule } from './search-bar.module';
 import { SearchBarComponent } from './search-bar.component';
 import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
@@ -38,7 +38,20 @@ const meta: Meta<SearchBarComponent> = {
 export default meta;
 
 type Story = StoryObj<SearchBarComponent>;
-
+const typeAheadResults: TypeAheadResult[] = [
+    {
+        title: "Help Me"
+    },
+    {
+        title: "Contact us"
+    },
+    {
+        title: "Message us"
+    },
+    {
+        title: "Support Page"
+    }
+]
 export const Default: Story = {
     args: {
          config : undefined,
@@ -59,6 +72,12 @@ export const WithInputs: Story = {
             })
          ,
          validators: undefined,
-         asyncValidators: undefined
+         asyncValidators: undefined,
+    }
+}
+
+export const TypeAhead: Story = {
+    args: {
+        typeAheadResults: typeAheadResults
     }
 }

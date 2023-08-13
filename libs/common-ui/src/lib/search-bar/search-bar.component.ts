@@ -8,28 +8,29 @@ import { pipe, of, switchMap, map, tap, Subject, distinctUntilChanged, debounceT
     <div class="search-wrapper" [class]="className">
       <div class="search-wrapper_input">
         <label [attr.id]="id" [attr.aria-label]="label"> {{ config?.label ?? 'Search' }} : </label>
-        <input (keyup.enter)="submitSearch()" [formControl]="searchBarControl" [attr.aria-labelledby]="id" type="text" />
-        <myworkspace-select *ngIf="config?.sortOptions" class="sort-option" [options]="config?.sortOptions"></myworkspace-select>
+        <div class="input-wrapper">
+          <div class="inline">
+            <input (keyup.enter)="submitSearch()" [formControl]="searchBarControl" [attr.aria-labelledby]="id" type="text" />
+            <myworkspace-select *ngIf="config?.sortOptions" class="sort-option" [options]="config?.sortOptions"></myworkspace-select>
+          </div>
+          <ng-container *ngIf="searchBarControl.invalid && searchBarControl.dirty && searchBarControl.touched" [ngTemplateOutlet]="error" [ngTemplateOutletContext]="searchBarControl"]>
+          </ng-container>
+          <ng-container *ngIf="typeAheadResults" [ngTemplateOutlet]="typeAhead">
+          </ng-container>
+        </div>
       </div>
-      <ng-container *ngIf="searchBarControl.invalid && searchBarControl.dirty && searchBarControl.touched" [ngTemplateOutlet]="error" [ngTemplateOutletContext]="searchBarControl"]>
-      </ng-container>
-      <ng-container *ngIf="typeAheadResults" [ngTemplateOutlet]="typeAhead">
 
-      </ng-container>
     </div>
 
     <ng-template #typeAhead>
       <div class="type-ahead-container">
         <ul class='type-ahead-result' aria-autocomplete="id" perfectScrollDirective>
           <ng-container *ngFor="let result of typeAheadResults">
-            <li class="type-ahead-result">
+            <li class="type-ahead-result" (click)="selectTypeAheadOption(result)">
               <!-- <span><icon></span><span *ngIf="result?.expandable" expandDirective @rotate="90">carrot placeholder</span> -->
               <div class="type-ahead-result__title"> {{result.title}}</div>
               <div *ngIf="result.isExpanded" class="expandable-section" perfectScrollDirective>
-                  <p *ngIf="result?.expandableContentText">
-                    {{result.expandableContentText}}
-                  </p>
-                  <ng-container *ngIf="result.expandableContent" [ngTemplateOutlet]="result.expandableContent"></ng-container>
+                  <ng-container *ngIf="result.expandableContent" [ngTemplateOutlet]="expandableContent" [ngTemplateOutletContext]="result"></ng-container>
               </div>
             </li>
           </ng-container>
@@ -39,10 +40,35 @@ import { pipe, of, switchMap, map, tap, Subject, distinctUntilChanged, debounceT
 
     <ng-template #error>
         {{searchBarControl.errors}}
+        <!-- Todo add switch for various error types -->
         <div *ngFor="let error of searchBarControl.errors | keyvalue" class="error"><p>{{ error.key }} {{ error.value | json }}</p></div>
     </ng-template>
+
+    <ng-template #expandableContent let-result>
+        <div [ngSwitch]="result.expandableContent">
+            <div *ngSwitchCase="result?.expanded" expandableContentDirective="true">
+            </div>
+            <div class="expandable-content-container" 
+              *ngSwitchDefault 
+              expandableContentDirective="false">
+              <p class="expandable-content">{{result.content}}</p>
+            </div>
+        </div>
+    </ng-template>
   `,
-  styles: [],
+  styles: [`
+
+    .search-wrapper {
+      display: flex;
+      flex-direction: row;
+    }
+    .type-ahead-container {
+      border: 1px solid grey;
+    }
+    .type-ahead-result {
+      list-style: none;
+    }
+  `],
 })
 export class SearchBarComponent implements OnInit, OnDestroy {
 
@@ -57,11 +83,11 @@ export class SearchBarComponent implements OnInit, OnDestroy {
   @Optional()
   @Input('asyncValidators') asyncValidators?: AsyncValidatorFn[]; 
 
-  _typeAheadResults?: TypeAheadResult[] | undefined;  
+  _typeAheadResults?: TypeAheadResult[] | undefined | null;  
   
   @Optional()
   @Input('typeAheadResults') 
-  set typeAheadResults(val: TypeAheadResult[] | undefined) {
+  set typeAheadResults(val: TypeAheadResult[] | undefined | null) {
     this._typeAheadResults = val;
   }
 
@@ -88,6 +114,14 @@ export class SearchBarComponent implements OnInit, OnDestroy {
     if(this.searchBarControl.valid) {
       this.searchEvent.emit(this.searchBarControl.value);
     }
+  }
+
+  // this is not a permanet solution. 
+  // because it depens if we clicked a link or not.
+  selectTypeAheadOption(result: TypeAheadResult) {
+    this.searchEvent.emit(result.title)
+    this.searchBarControl.setValue(result.title)
+    this.typeAheadResults = undefined;
   }
 
   constructor() {
