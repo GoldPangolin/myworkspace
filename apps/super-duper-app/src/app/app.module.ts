@@ -5,9 +5,10 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
 import { NxWelcomeComponent } from './nx-welcome.component';
+import { SuperLayoutComponent } from './layout/super-layout.component';
 
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent],
+  declarations: [AppComponent, NxWelcomeComponent, SuperLayoutComponent],
   imports: [
     BrowserModule,
     CommonUiModule,
@@ -16,4 +17,6 @@ import { NxWelcomeComponent } from './nx-welcome.component';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  
+}

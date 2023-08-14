@@ -1,7 +1,6 @@
 <!-- Navigation -->
 <!-- this is just temp until I build the real component -->
-    <div class="vertical-navigation"
-        [class.open]="!isSmallScreen || !isFocusMode">
+    <div class="vertical-navigation">
         <ng-container verticalNavContainer>
             <div>
                 <!-- site logo -->
@@ -28,7 +27,8 @@
     <!-- End Header -->
 
     <!-- Content -->
-    <router-outlet></router-outlet>
+    <!-- <router-outlet></router-outlet> -->
+    <ng-content select="[content]"></ng-content>
     <!-- End Content -->
 </div>
 <!-- End Content Wrapper -->

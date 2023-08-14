@@ -1,13 +1,9 @@
-import { NgIf } from "@angular/common";
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from "@angular/core";
-import { RouterOutlet } from "@angular/router";
-
 @Component({
     selector: 'super-layout',
-    templateUrl: './super-layout.component.ts',
+    templateUrl: './super-layout.component.html',
+    styleUrls: ['./super-layout.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    standalone: true,
-    imports: [NgIf, RouterOutlet]
 }) export class SuperLayoutComponent implements OnInit, OnDestroy {
     constructor(){
 

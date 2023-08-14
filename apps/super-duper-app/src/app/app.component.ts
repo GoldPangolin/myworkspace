@@ -7,6 +7,6 @@ import { exampleProducts, tree } from '@myworkspace/mock-data';
 })
 export class AppComponent {
   title = 'super-duper-app';
-  products = exampleProducts;
-  testTree = tree;
+  // products = exampleProducts;
+  // testTree = tree;
 }
