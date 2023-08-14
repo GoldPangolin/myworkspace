@@ -1,16 +1,16 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { clickOutSideDirective } from "./click-outside.directive";
+import { ClickOutSideDirective } from "./click-outside.directive";
 
 @NgModule({
     imports: [
         CommonModule
     ],
     declarations: [
-        clickOutSideDirective
+        ClickOutSideDirective
     ],
     exports: [
-        clickOutSideDirective
+        ClickOutSideDirective
     ]
 }) export class ClickOutsideDirectiveModule {
 

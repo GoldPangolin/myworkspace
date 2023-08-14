@@ -15,6 +15,6 @@ import { ClickOutsideDirectiveModule } from './directives/click-outside/click-ou
     TaskComponent,
     TaskListComponent,
   ],
-  exports: [BannerComponent, TreeModule, SearchBarModule, SelectModule, ClickOutsideDirectiveModule],
+  exports: [BannerComponent, TreeModule, SearchBarModule, SelectModule],
 })
 export class CommonUiModule {}

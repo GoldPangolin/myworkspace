@@ -9,7 +9,7 @@ import { ClickOutsideDirectiveModule } from '../directives/click-outside/click-o
         CommonModule,
         ReactiveFormsModule,
         SelectModule,
-        ClickOutsideDirectiveModule
+        ClickOutsideDirectiveModule,
     ],
     declarations: [SearchBarComponent],
     providers: [],
