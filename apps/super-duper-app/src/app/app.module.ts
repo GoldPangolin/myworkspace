@@ -4,11 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
-import { NxWelcomeComponent } from './nx-welcome.component';
 import { SuperLayoutComponent } from './layout/super-layout.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent, SuperLayoutComponent],
+  declarations: [AppComponent, SuperLayoutComponent, NotFoundComponent],
   imports: [
     BrowserModule,
     CommonUiModule,
@@ -16,7 +16,6 @@ import { SuperLayoutComponent } from './layout/super-layout.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
+  exports: [NotFoundComponent],
 })
-export class AppModule {
-  
-}
+export class AppModule {}

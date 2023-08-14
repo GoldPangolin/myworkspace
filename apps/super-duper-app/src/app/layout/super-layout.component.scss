@@ -4,4 +4,27 @@
     min-width: 150px;
     max-width: 300px;
     display: flex;
+    flex-direction: column;
+    background: whitesmoke;
+}
+
+.content-wrapper {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    background: whitesmoke;
+    margin-left: 5px;
+
+    .header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .header-widgets-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            width: 30%
+        }
+    }
 }

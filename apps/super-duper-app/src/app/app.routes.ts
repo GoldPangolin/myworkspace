@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Route } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 export const appRoutes: Route[] = [
     {
-        path: 'nx-welcome',
-        component: NxWelcomeComponent,
+        path: 'not-found',
+        component: NotFoundComponent
     },
     // {
     //     path: 'pages',
@@ -28,6 +28,6 @@ export const appRoutes: Route[] = [
     // },
     {
         path: '**',
-        redirectTo: 'nx-welcome'
+        redirectTo: 'not-found'
     }
 ];
