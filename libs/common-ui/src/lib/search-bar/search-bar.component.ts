@@ -23,7 +23,7 @@ import { pipe, of, switchMap, map, tap, Subject, distinctUntilChanged, debounceT
     </div>
 
     <ng-template #typeAhead>
-      <div class="type-ahead-container">
+      <div class="type-ahead-container" clickOutsideDirective (clickedOutside)="closeTypeAhead()">
         <ul class='type-ahead-result' aria-autocomplete="id" perfectScrollDirective>
           <ng-container *ngFor="let result of typeAheadResults">
             <li class="type-ahead-result" (click)="selectTypeAheadOption(result)">
@@ -57,7 +57,7 @@ import { pipe, of, switchMap, map, tap, Subject, distinctUntilChanged, debounceT
     </ng-template>
   `,
   styles: [`
-
+    // this is just temp as I will make this all configuarble styles.
     .search-wrapper {
       display: flex;
       flex-direction: row;
@@ -124,12 +124,17 @@ export class SearchBarComponent implements OnInit, OnDestroy {
     this.typeAheadResults = undefined;
   }
 
+  closeTypeAhead() {
+    this._typeAheadResults = undefined;
+  }
+
   constructor() {
     this.searchBarControl.valueChanges.pipe(
       takeUntil(this.destroyed),
       distinctUntilChanged(),
       debounceTime(300),
       tap((val: string) => {
+        this._typeAheadResults = [{ title: 'hi'}, {title: 'bye'}];
         this.typeAhead.emit(val);
       })
     ).subscribe((value) => {
