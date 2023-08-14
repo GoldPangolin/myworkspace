@@ -1,0 +1,35 @@
+<!-- Navigation -->
+<!-- this is just temp until I build the real component -->
+    <div class="vertical-navigation"
+        [class.open]="!isSmallScreen || !isFocusMode">
+        <ng-container verticalNavContainer>
+            <div>
+                <!-- site logo -->
+                <img>
+            </div>
+        </ng-container>
+    </div>
+<!-- End Navigation -->
+
+
+<!-- Page Wrapper -->
+<div class="content-wrapper">
+    <!-- Header -->
+    <div class="header">
+        <div class="toggle-side-nav"><button>hamburger</button></div>
+        <div class="header-widgets-container">
+            <div class="widget">1</div>
+            <div class="widget">2</div>
+            <div class="widget">3</div>
+            <div class="user-widget">User Stuff</div>
+        </div>
+
+    </div>
+    <!-- End Header -->
+
+    <!-- Content -->
+    <router-outlet></router-outlet>
+    <!-- End Content -->
+</div>
+<!-- End Content Wrapper -->
+
