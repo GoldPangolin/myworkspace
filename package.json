@@ -3,19 +3,24 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    
+    "test-storybook": "test-storybook"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~16.1.0",
+    "@angular/cdk": "^16.2.0",
     "@angular/common": "~16.1.0",
     "@angular/compiler": "~16.1.0",
     "@angular/core": "~16.1.0",
     "@angular/forms": "~16.1.0",
+    "@angular/material": "^16.2.0",
     "@angular/platform-browser": "~16.1.0",
     "@angular/platform-browser-dynamic": "~16.1.0",
     "@angular/router": "~16.1.0",
     "@nx/angular": "16.6.0",
+    "highlight.js": "^11.8.0",
+    "lodash-es": "^4.17.21",
+    "perfect-scrollbar": "^1.5.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rxjs": "~7.8.0",
