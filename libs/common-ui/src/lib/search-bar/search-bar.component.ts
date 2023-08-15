@@ -13,7 +13,7 @@ import { pipe, of, switchMap, map, tap, Subject, distinctUntilChanged, debounceT
             <input (keyup.enter)="submitSearch()" [formControl]="searchBarControl" [attr.aria-labelledby]="id" type="text" />
             <myworkspace-select *ngIf="config?.sortOptions" class="sort-option" [options]="config?.sortOptions"></myworkspace-select>
           </div>
-          <ng-container *ngIf="searchBarControl.invalid && searchBarControl.dirty && searchBarControl.touched" [ngTemplateOutlet]="error" [ngTemplateOutletContext]="searchBarControl"]>
+          <ng-container *ngIf="searchBarControl.invalid && searchBarControl.dirty && searchBarControl.touched" [ngTemplateOutlet]="error">
           </ng-container>
           <ng-container *ngIf="typeAheadResults" [ngTemplateOutlet]="typeAhead">
           </ng-container>
@@ -23,13 +23,13 @@ import { pipe, of, switchMap, map, tap, Subject, distinctUntilChanged, debounceT
     </div>
 
     <ng-template #typeAhead>
-      <div class="type-ahead-container" clickOutsideDirective (clickedOutside)="closeTypeAhead()">
-        <ul class='type-ahead-result' aria-autocomplete="id" perfectScrollDirective>
+      <div class="type-ahead-container" perfectScroll clickOutsideDirective (clickedOutside)="closeTypeAhead()">
+        <ul class='type-ahead-result' aria-autocomplete="id">
           <ng-container *ngFor="let result of typeAheadResults">
             <li class="type-ahead-result" (click)="selectTypeAheadOption(result)">
               <!-- <span><icon></span><span *ngIf="result?.expandable" expandDirective @rotate="90">carrot placeholder</span> -->
               <div class="type-ahead-result__title"> {{result.title}}</div>
-              <div *ngIf="result.isExpanded" class="expandable-section" perfectScrollDirective>
+              <div *ngIf="result.isExpanded" class="expandable-section">
                   <ng-container *ngIf="result.expandableContent" [ngTemplateOutlet]="expandableContent" [ngTemplateOutletContext]="result"></ng-container>
               </div>
             </li>
@@ -38,8 +38,8 @@ import { pipe, of, switchMap, map, tap, Subject, distinctUntilChanged, debounceT
       </div>
     </ng-template>
 
+    <!--  Need to flesh out this a little better -->
     <ng-template #error>
-        {{searchBarControl.errors}}
         <!-- Todo add switch for various error types -->
         <div *ngFor="let error of searchBarControl.errors | keyvalue" class="error"><p>{{ error.key }} {{ error.value | json }}</p></div>
     </ng-template>
@@ -64,6 +64,8 @@ import { pipe, of, switchMap, map, tap, Subject, distinctUntilChanged, debounceT
     }
     .type-ahead-container {
       border: 1px solid grey;
+      max-height: 200px;
+      overflow: scroll;
     }
     .type-ahead-result {
       list-style: none;
@@ -134,7 +136,7 @@ export class SearchBarComponent implements OnInit, OnDestroy {
       distinctUntilChanged(),
       debounceTime(300),
       tap((val: string) => {
-        this._typeAheadResults = [{ title: 'hi'}, {title: 'bye'}];
+        this._typeAheadResults = [{ title: 'hi'}, {title: 'bye'},{ title: 'hi'}, {title: 'bye'},{ title: 'hi'}, {title: 'bye'},{ title: 'hi'}, {title: 'bye'},{ title: 'hi'}, {title: 'bye'},{ title: 'hi'}, {title: 'bye'}];
         this.typeAhead.emit(val);
       })
     ).subscribe((value) => {
