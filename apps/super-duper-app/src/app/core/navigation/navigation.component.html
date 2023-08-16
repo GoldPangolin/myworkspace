@@ -13,9 +13,12 @@
         </div>
         <!-- Items -->
         <ng-container *ngFor="let item of mainNavigation">
-            <div *ngIf="item.type === 'group'">
-                <h4 class="group-title" (click)="selectMainNavItem(item)">{{item.title}}</h4>
-            </div>
+            <ng-container *ngIf="item.type === 'group'">
+                <div class="side-nav-group-wrapper" (click)="selectMainNavItem(item)">
+                    <mat-icon ></mat-icon>
+                    <div class="side-nav-group-title">{{item.title}}</div>
+                </div>
+            </ng-container>
         </ng-container>
         <!-- Content Footer -->
     <!-- Footer -->
