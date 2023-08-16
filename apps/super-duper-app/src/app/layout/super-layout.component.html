@@ -1,33 +1,32 @@
 <!-- Navigation -->
 <!-- this is just temp until I build the real component -->
-    <div class="vertical-navigation">
-        <ng-container verticalNavContainer>
+    <side-navigation class="vertical-navigation">
+        <!-- [ngStyle]="{ 'display' :(showSidenav$ | async)! ? 'none' : 'flex'}" -->
+        <ng-container sideNavContainerHeader>
             <div>
                 <!-- site logo -->
                 <img>
             </div>
         </ng-container>
-    </div>
+    </side-navigation>
 <!-- End Navigation -->
 
 
 <!-- Page Wrapper -->
 <div class="content-wrapper">
     <!-- Header -->
-    <div class="header">
-        <div class="toggle-side-nav"><button>hamburger</button></div>
-        <div class="header-widgets-container">
+    <header class="header">
+        <div class="toggle-side-nav"><button (click)="toggleSideNav()">hamburger</button></div>
+        <nav class="header-widgets-container">
             <div class="widget">1</div>
             <div class="widget">2</div>
             <div class="widget">3</div>
             <div class="user-widget">User Stuff</div>
-        </div>
-
-    </div>
+        </nav>
+    </header>
     <!-- End Header -->
 
     <!-- Content -->
-    <!-- <router-outlet></router-outlet> -->
     <ng-content select="[content]"></ng-content>
     <!-- End Content -->
 </div>

@@ -1,0 +1,35 @@
+<div class="side-nav-wrapper">
+    <!-- header -->
+    <div class="side-nav-header">
+        <ng-content select="[sideNavContainerHeader]"></ng-content>
+    </div>
+    <!-- content -->
+    <div class="side-nav-content"
+        #navigationContent
+    ></div>
+        <!-- content header -->
+        <div class="side-nav-content-header">
+            <ng-content select="[sideNavContentHeader]"></ng-content>
+        </div>
+        <!-- Items -->
+        <ng-container *ngFor="let item of navigation">
+            <ng-container *ngIf="!item.hidden">
+                <ng-container *ngSwitch="item.type">
+                    <basic-nav-item *ngSwitchCase="'basic'" [item]="item"></basic-nav-item>
+                    <collapsable-nav-item *ngSwitchCase="'collapse'"></collapsable-nav-item>
+                    <basic-nav-item *ngSwitchDefault [item]="item" ></basic-nav-item>
+                </ng-container>
+            </ng-container>
+        </ng-container>
+
+        <!-- Content Footer -->
+    <!-- Footer -->
+</div>
+
+<!-- Navigation Aside -->
+<ng-container *ngIf="activeAsideItem">
+    <div class="side-nav-aside-wrapper">
+        <!-- Items -->
+            <!-- Aside -->
+    </div>
+</ng-container>
