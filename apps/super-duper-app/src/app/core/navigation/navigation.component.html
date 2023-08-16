@@ -1,29 +1,31 @@
 <div class="side-nav-wrapper">
     <!-- header -->
     <div class="side-nav-header">
+        <h1>Side Nav is here</h1>
         <ng-content select="[sideNavContainerHeader]"></ng-content>
     </div>
     <!-- content -->
     <div class="side-nav-content"
         #navigationContent
-    ></div>
+    >
         <!-- content header -->
         <div class="side-nav-content-header">
             <ng-content select="[sideNavContentHeader]"></ng-content>
         </div>
         <!-- Items -->
         <ng-container *ngFor="let item of navigation">
-            <ng-container *ngIf="!item.hidden">
-                <ng-container *ngSwitch="item.type">
-                    <basic-nav-item *ngSwitchCase="'basic'" [item]="item"></basic-nav-item>
-                    <collapsable-nav-item *ngSwitchCase="'collapse'"></collapsable-nav-item>
-                    <basic-nav-item *ngSwitchDefault [item]="item" ></basic-nav-item>
-                </ng-container>
-            </ng-container>
+            <!-- <ng-container *ngIf="!item.hidden"> -->
+                <!-- <ng-container *ngSwitch="item.type"> -->
+                    <basic-nav-item [item]="item"></basic-nav-item>
+                    <collapsable-nav-item></collapsable-nav-item>
+                    <basic-nav-item [item]="item" ></basic-nav-item>
+                <!-- </ng-container> -->
+            <!-- </ng-container> -->
         </ng-container>
 
         <!-- Content Footer -->
     <!-- Footer -->
+    </div>
 </div>
 
 <!-- Navigation Aside -->
@@ -31,5 +33,10 @@
     <div class="side-nav-aside-wrapper">
         <!-- Items -->
             <!-- Aside -->
+            <div *ngFor="let item of navigation">
+                <div *ngIf="(item.type === 'aside') && item === activeItem">
+                    {{item.title}}
+                </div>
+            </div>
     </div>
 </ng-container>

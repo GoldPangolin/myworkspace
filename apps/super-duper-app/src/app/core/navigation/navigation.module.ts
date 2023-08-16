@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { NavigationBasicItemComponent } from "./nav-items/basic/basic.component";
 import { NavigationComponent } from "./navigation.component";
 import { NavigationCollapsableItemComponent } from "./nav-items/collapsable/collapsable.component";
+import { CommonModule } from "@angular/common";
 
 
 export const NAV_COMPONENTS = [
@@ -10,7 +11,7 @@ export const NAV_COMPONENTS = [
     NavigationComponent
 ]
 @NgModule({
-    imports:[],
+    imports:[CommonModule],
     declarations: [
         NAV_COMPONENTS
     ],

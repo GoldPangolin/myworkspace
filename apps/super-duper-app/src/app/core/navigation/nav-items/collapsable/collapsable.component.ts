@@ -6,7 +6,7 @@ import { SuperDuperAnimationsModule } from 'libs/common-ui/src/lib/animations/an
     selector       : 'collapsable-nav-item',
     templateUrl    : './collapsable.component.html',
     animations     : [SuperDuperAnimationsModule.animations],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationCollapsableItemComponent implements OnInit, OnDestroy
 {

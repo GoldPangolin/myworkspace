@@ -4,6 +4,7 @@ import { IsActiveMatchOptions, Params, QueryParamsHandling } from "@angular/rout
 export interface NavigationItem {
     id?: string;
     title?: string;
+    icon?: string;
     subtitle?: string;
     type: | 'aside' | 'basic' | 'collapsable' | 'divider' | 'group' | 'spacer';
     hidden?: (itme: NavigationItem)=> boolean;

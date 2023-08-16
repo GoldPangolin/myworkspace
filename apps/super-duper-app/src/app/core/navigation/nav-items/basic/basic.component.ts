@@ -4,7 +4,7 @@ import { NavigationItem } from '../../navigation.types';
 @Component({
     selector       : 'basic-nav-item',
     templateUrl    : './basic.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationBasicItemComponent implements OnInit, OnDestroy
 {
