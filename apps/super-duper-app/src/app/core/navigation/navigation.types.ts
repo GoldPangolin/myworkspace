@@ -16,6 +16,7 @@ export interface NavigationItem {
     queryParamsHandling?: QueryParamsHandling | null;
     exactMatch?: boolean;
     children?: NavigationItem[];
+    badge?: any;
 }
 
 export type NavigationAppearance = 

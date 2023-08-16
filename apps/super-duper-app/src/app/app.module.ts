@@ -1,3 +1,4 @@
+import { MatIconModule } from '@angular/material/icon';
 import { CommonUiModule } from './../../../../libs/common-ui/src/lib/common-ui.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -26,6 +27,7 @@ import { NavigationModule } from './core/navigation/navigation.module';
     CommonUiModule,
     SuperDuperAnimationsModule,
     NavigationModule,
+    MatIconModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
     // StoreModule.forRoot(rootReducers, {
     //   metaReducers,

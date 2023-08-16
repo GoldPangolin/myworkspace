@@ -1,3 +1,4 @@
+import { closeSidenav } from './actions/layout.actions';
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from "@angular/core";
 import { Store } from "@ngrx/store";
 // import { Observable, tap } from "rxjs";
@@ -9,10 +10,9 @@ import { Store } from "@ngrx/store";
     styleUrls: ['./super-layout.component.scss'],
     encapsulation: ViewEncapsulation.None,
     animations: [
-        
     ]
 }) export class SuperLayoutComponent implements OnInit, OnDestroy {
-
+    spOpen = true;
     // showSidenav$: Observable<boolean>
     constructor(
         // private store: Store
@@ -29,6 +29,7 @@ import { Store } from "@ngrx/store";
     }
 
     toggleSideNav() {
+        this.spOpen = !this.spOpen;
         // this.showSidenav$.pipe(
         //     tap((boolean)=> console.log('stream')
         //     ),

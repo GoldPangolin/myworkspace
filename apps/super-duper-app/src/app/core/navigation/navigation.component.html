@@ -1,7 +1,6 @@
-<div class="side-nav-wrapper">
+<div class="side-nav-wrapper" perfecScroll="true">
     <!-- header -->
     <div class="side-nav-header">
-        <h1>Side Nav is here</h1>
         <ng-content select="[sideNavContainerHeader]"></ng-content>
     </div>
     <!-- content -->
@@ -13,16 +12,11 @@
             <ng-content select="[sideNavContentHeader]"></ng-content>
         </div>
         <!-- Items -->
-        <ng-container *ngFor="let item of navigation">
-            <!-- <ng-container *ngIf="!item.hidden"> -->
-                <!-- <ng-container *ngSwitch="item.type"> -->
-                    <basic-nav-item [item]="item"></basic-nav-item>
-                    <collapsable-nav-item></collapsable-nav-item>
-                    <basic-nav-item [item]="item" ></basic-nav-item>
-                <!-- </ng-container> -->
-            <!-- </ng-container> -->
+        <ng-container *ngFor="let item of mainNavigation">
+            <div *ngIf="item.type === 'group'">
+                <h4 class="group-title" (click)="selectMainNavItem(item)">{{item.title}}</h4>
+            </div>
         </ng-container>
-
         <!-- Content Footer -->
     <!-- Footer -->
     </div>
@@ -31,12 +25,17 @@
 <!-- Navigation Aside -->
 <ng-container *ngIf="activeAsideItem">
     <div class="side-nav-aside-wrapper">
+        <h2>{{ activeAsideItem.title}}</h2>
         <!-- Items -->
             <!-- Aside -->
-            <div *ngFor="let item of navigation">
-                <div *ngIf="(item.type === 'aside') && item === activeItem">
-                    {{item.title}}
-                </div>
-            </div>
+            <ng-container *ngFor="let nav of activeAsideItem.children">
+                <ng-container *ngIf="!nav.hidden">
+                    <ng-container [ngSwitch]="nav.type">
+                        <basic-nav-item *ngSwitchCase="'basic'" [item]="nav"></basic-nav-item>
+                        <collapsable-nav-item *ngSwitchCase="'collapsable'" [item]="nav" ></collapsable-nav-item>
+                        <basic-nav-item *ngSwitchDefault [item]="nav" ></basic-nav-item>
+                    </ng-container>
+                </ng-container>
+            </ng-container>
     </div>
 </ng-container>

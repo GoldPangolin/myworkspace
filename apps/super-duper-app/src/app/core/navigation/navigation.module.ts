@@ -3,6 +3,7 @@ import { NavigationBasicItemComponent } from "./nav-items/basic/basic.component"
 import { NavigationComponent } from "./navigation.component";
 import { NavigationCollapsableItemComponent } from "./nav-items/collapsable/collapsable.component";
 import { CommonModule } from "@angular/common";
+import { MatIconModule } from "@angular/material/icon";
 
 
 export const NAV_COMPONENTS = [
@@ -11,7 +12,10 @@ export const NAV_COMPONENTS = [
     NavigationComponent
 ]
 @NgModule({
-    imports:[CommonModule],
+    imports:[
+        CommonModule, 
+        MatIconModule
+    ],
     declarations: [
         NAV_COMPONENTS
     ],

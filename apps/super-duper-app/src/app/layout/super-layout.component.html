@@ -1,6 +1,6 @@
 <!-- Navigation -->
 <!-- this is just temp until I build the real component -->
-    <side-navigation class="vertical-navigation">
+    <side-navigation *ngIf="spOpen" class="vertical-navigation" perfectScroll>
         <!-- [ngStyle]="{ 'display' :(showSidenav$ | async)! ? 'none' : 'flex'}" -->
         <ng-container sideNavContainerHeader>
             <div>
@@ -16,7 +16,7 @@
 <div class="content-wrapper">
     <!-- Header -->
     <header class="header">
-        <div class="toggle-side-nav"><button (click)="toggleSideNav()">hamburger</button></div>
+        <div class="toggle-side-nav" (click)="toggleSideNav()"><button >hamburger</button></div>
         <nav class="header-widgets-container">
             <div class="widget">1</div>
             <div class="widget">2</div>
