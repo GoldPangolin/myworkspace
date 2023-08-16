@@ -1,4 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-    background: gray;
+    background-color: gray;
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --primary-color: #12263A;
+    --secondary-color: #06BCC1;
+    --tertiary-color: #C5D8D1;
+    --quaternary-color: #F4EDEA;
+    --quinary-color: #F4D1AE;
 }

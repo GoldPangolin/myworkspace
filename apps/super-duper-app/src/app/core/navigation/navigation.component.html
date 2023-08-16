@@ -24,7 +24,11 @@
 
 <!-- Navigation Aside -->
 <ng-container *ngIf="activeAsideItem">
-    <div class="side-nav-aside-wrapper">
+    <div 
+        class="side-nav-aside-wrapper"
+        [@fadeInLeft]="'left'"
+        [@fadeOutLeft]="'left'"
+    >
         <h2>{{ activeAsideItem.title}}</h2>
         <!-- Items -->
             <!-- Aside -->
