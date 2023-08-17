@@ -1,4 +1,4 @@
-import { MatIconModule } from '@angular/material/icon';
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { CommonUiModule } from './../../../../libs/common-ui/src/lib/common-ui.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,14 +15,16 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { SuperDuperAnimationsModule } from 'libs/common-ui/src/lib/animations/animations.module';
 import { NavigationModule } from './core/navigation/navigation.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
-    SuperLayoutComponent
+    SuperLayoutComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     CommonUiModule,
     SuperDuperAnimationsModule,

@@ -4,12 +4,14 @@ import { NavigationComponent } from "./navigation.component";
 import { NavigationCollapsableItemComponent } from "./nav-items/collapsable/collapsable.component";
 import { CommonModule } from "@angular/common";
 import { MatIconModule } from "@angular/material/icon";
+import { DividerComponent } from "./nav-items/divider/divider.component";
 
 
 export const NAV_COMPONENTS = [
     NavigationBasicItemComponent,
     NavigationCollapsableItemComponent,
-    NavigationComponent
+    NavigationComponent,
+    DividerComponent
 ]
 @NgModule({
     imports:[

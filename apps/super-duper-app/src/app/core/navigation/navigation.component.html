@@ -15,7 +15,8 @@
         <ng-container *ngFor="let item of mainNavigation">
             <ng-container *ngIf="item.type === 'group'">
                 <div class="side-nav-group-wrapper" (click)="selectMainNavItem(item)">
-                    <mat-icon ></mat-icon>
+                    <mat-icon *ngIf="item.icon" aria-hidden="false" [svgIcon]="item.icon">
+                    </mat-icon>
                     <div class="side-nav-group-title">{{item.title}}</div>
                 </div>
             </ng-container>
@@ -32,12 +33,13 @@
         [@fadeInLeft]="'left'"
         [@fadeOutLeft]="'left'"
     >
-        <h2>{{ activeAsideItem.title}}</h2>
+        <h2 class="aside-navigation-title">{{ activeAsideItem.title}}</h2>
         <!-- Items -->
             <!-- Aside -->
             <ng-container *ngFor="let nav of activeAsideItem.children">
                 <ng-container *ngIf="!nav.hidden">
                     <ng-container [ngSwitch]="nav.type">
+                        <nav-divider *ngSwitchCase="'divider'"></nav-divider>
                         <basic-nav-item *ngSwitchCase="'basic'" [item]="nav"></basic-nav-item>
                         <collapsable-nav-item *ngSwitchCase="'collapsable'" [item]="nav" ></collapsable-nav-item>
                         <basic-nav-item *ngSwitchDefault [item]="nav" ></basic-nav-item>
