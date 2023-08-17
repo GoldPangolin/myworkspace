@@ -1,3 +1,22 @@
-<div class="nav-item">
-    {{item?.title}}
+<div class="nav-item-group-wrapper">
+    <div class="nav-item-group" (click)="toggleCollapsable()">
+          <ng-container *ngIf="item && item.icon"><mat-icon class="nav-item-group-icon" [svgIcon]="item.icon"></mat-icon></ng-container>
+          <div class="nav-item-group__title">{{item?.title}}</div>
+          <div *ngIf="item && item.subtitle" class="nav-item-group__subtitle">{{item.subtitle}}</div>
+          <mat-icon class="nav-item-group__arrow navigation-item-collapsed" [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
+    </div>
+
+    <div *ngIf='!isCollapsed' class="nav-item-group__expandable-content-wrapper" @expandCollapse>
+        <ng-container *ngFor="let nav of item?.children">
+                <ng-container *ngIf="!nav.hidden">
+                    <ng-container [ngSwitch]="nav.type">
+                        <nav-divider *ngSwitchCase="'divider'" class="nav-item"></nav-divider>
+                        <basic-nav-item *ngSwitchCase="'basic'" class="nav-item" [item]="nav"></basic-nav-item>
+                        <collapsable-nav-item *ngSwitchCase="'collapsable'" class="nav-item" [item]="nav" ></collapsable-nav-item>
+                        <basic-nav-item *ngSwitchDefault class="nav-item" [item]="nav" ></basic-nav-item>
+                    </ng-container>
+                </ng-container>
+        </ng-container>
+    </div>
 </div>
+

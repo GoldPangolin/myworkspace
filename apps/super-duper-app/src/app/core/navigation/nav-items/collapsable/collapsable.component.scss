@@ -1,0 +1,23 @@
+
+.nav-item-group-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+
+    .nav-item-group {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    
+        .na-item-group-icon {
+            margin-right: 3px;
+        }
+    }
+
+    .nav-item-group__expandable-content-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+    }
+} 
