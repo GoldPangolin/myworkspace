@@ -16,6 +16,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { SuperDuperAnimationsModule } from 'libs/common-ui/src/lib/animations/animations.module';
 import { NavigationModule } from './core/navigation/navigation.module';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
+import { AdminPanelModule } from './pages/admin-panel/admin-panel.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     SuperLayoutComponent,
   ],
   imports: [
+    AdminPanelModule,
     HttpClientModule,
     BrowserModule,
     CommonUiModule,
@@ -48,6 +51,8 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [],
+  exports: [
+    AdminPanelComponent
+  ],
 })
 export class AppModule {}

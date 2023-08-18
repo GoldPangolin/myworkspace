@@ -1,0 +1,40 @@
+
+:host {
+    margin: auto;
+
+    .banner-alert {
+        position: absolute;
+        top: 40px;
+    }
+
+    .admin-panel-wrapper {
+        display: flex;
+        flex-direction: column;
+        
+        .user-list {
+            list-style: none;
+            .user {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+                padding: 2em;
+                border-radius: 10px;
+                border: 1px solid gray;
+
+                td {
+                    margin-right: 5px;
+                    align-items: center;
+                }
+            }
+
+            .odd {
+                background-color: gray;
+            }
+        }
+    }
+}
+
+.compromised {
+    background-color: orange !important;
+}

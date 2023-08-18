@@ -1,0 +1,24 @@
+<div class="banner-alert" *ngIf="(passwordAlert | async)!">
+ A password is compromised
+</div>
+
+<div class="admin-panel-wrapper">
+    <table class="user-list">
+        <ng-container *ngFor="let user of usersData; let i = index; let o = odd; trackby: trackById">
+        <tr class="user" [class.odd]="o" [class.compromised]="user.compromised" (click)="toggleCompromised()">
+            <td>{{ user.user_name }}</td> <td>{{ user.email }}</td> <td>{{ user.compromised }}</td> <td>{{ user.date }}</td>
+        </tr>
+        </ng-container>
+    </table>
+    <button (click)="customGet()">get socials for user</button>
+</div>
+
+<ng-container *ngIf="socialData">
+    
+    <ul>
+        <li *ngFor="let item of socialData | keyvalue">
+            {{ item.key }}
+            <ul><li *ngFor="let subItem of item.value">{{subItem}}</li></ul>
+        </li>
+    </ul>
+</ng-container>
