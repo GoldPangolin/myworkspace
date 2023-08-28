@@ -11,8 +11,9 @@ import axios from 'axios';
 export class AdminPanelComponent {
 
   passwordAlert: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  public usersData: any[] = [];
+  usersData: any[] = [];
   filterText: string = "";
+  filterSelect: string = 'user_name';
   url = '';
   api_key: string ='123';
   headers = new Request(this.url, {
@@ -42,7 +43,16 @@ export class AdminPanelComponent {
   }
 
   get filteredUsers() {
-    return this.usersData.filter(user => user.user_name.toLowerCase().includes(this.filterText.toLowerCase()));
+    if (this.filterSelect === 'user_name'){
+      return this.usersData.filter(user => user.user_name.toLowerCase().includes(this.filterText.toLowerCase()));
+    }
+    if(this.filterSelect === 'email') {
+      return this.usersData.filter(user => user.email.toLowerCase().includes(this.filterText.toLowerCase()));
+    }
+    if(this.filterSelect === 'compromised') {
+      return this.usersData.filter(user => user.compromised === true);      
+    }
+    return this.usersData;
   }
 
   async customGet() {

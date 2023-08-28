@@ -14,10 +14,12 @@
             margin-right: 3px;
         }
     }
-
-    .nav-item-group__expandable-content-wrapper {
-        display: flex;
-        flex-direction: column;
-        justify-content: start;
-    }
 } 
+
+
+.nav-item-group__expandable-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding-left: 15px;
+}

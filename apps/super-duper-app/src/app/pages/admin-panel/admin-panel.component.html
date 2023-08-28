@@ -3,24 +3,30 @@
 </div>
 
 <div class="admin-panel-wrapper">
-    <input type="text" [(ngModel)]="filterText" placeholder="Search users">
-
+    <h2 class="admin-panel-header">Admin Panel</h2>
+    <div class="search-wrapper">
+        <label id="user-search-label" class="visually-hidden" for="user-search-input"> Search:</label>
+        <input id="user-search-input" class="user-search-input" type="text" [(ngModel)]="filterText" placeholder="Search users"><mat-icon class="clear-icon" (click)="filterText = ''" aria-hidden="false" aria-label="Example home icon" [svgIcon]="'heroicons_solid:x-mark'"></mat-icon>
+        <select class="filter-select" [(ngModel)]="filterSelect">
+            <option [value]="'email'">Email</option>
+            <option [value]="'user_name'">Username</option>
+            <option [value]="'compromised'">Compromised</option>
+        </select>
+    </div>
     <table class="user-list">
         <ng-container *ngFor="let user of filteredUsers; let i = index; let o = odd; trackby: trackById">
         <tr class="user" [class.odd]="o" [class.compromised]="user.compromised" (click)="toggleCompromised()">
-            <td>{{ user.user_name }}</td> <td>{{ user.email }}</td> <td>{{ user.compromised }}</td> <td>{{ user.date }}</td>
+            <td>{{ user.user_name }}</td> <td>{{ user.email }}</td> <td><mat-icon *ngIf="user.compromised" [svgIcon]="'heroicons_solid:key'"></mat-icon></td> <td>{{ user.date }}</td> <td><mat-icon (click)="customGet()" [svgIcon]="'heroicons_solid:user-group'"></mat-icon></td>
         </tr>
         </ng-container>
     </table>
-    <button (click)="customGet()">get socials for user</button>
 </div>
 
 <ng-container *ngIf="socialData">
-    
     <ul>
         <li *ngFor="let item of socialData | keyvalue">
             {{ item.key }}
-            <ul><li *ngFor="let subItem of item.value">{{subItem}}</li></ul>
+            <ul *ngIf="item && item.value"><li *ngFor="let subItem of item.value">{{subItem}}</li></ul>
         </li>
     </ul>
 </ng-container>

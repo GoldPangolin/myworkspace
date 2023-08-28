@@ -12,4 +12,28 @@ body {
     --quaternary-color: #F4EDEA;
     --quinary-color: #F4D1AE;
     --main-font-family: "Inter var", ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji" ;
+    --visually-hidden: {
+        position: absolute !important;
+        clip: rect(1px, 1px, 1px, 1px);
+        padding: 0 !important;
+        border: 0 !important;
+        height: 1px !important;
+        width: 1px !important;
+        overflow: hidden;
+      };
+    
+      @mixin visually-hidden {
+        position: absolute !important;
+        clip: rect(1px, 1px, 1px, 1px);
+        padding: 0 !important;
+        border: 0 !important;
+        height: 1px !important;
+        width: 1px !important;
+        overflow: hidden;
+      }
+      
+      // Usage example
+      .visually-hidden {
+        @include visually-hidden;
+      }
 }
