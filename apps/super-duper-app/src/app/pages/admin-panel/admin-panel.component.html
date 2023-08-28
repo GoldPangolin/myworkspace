@@ -16,7 +16,7 @@
     <table class="user-list">
         <ng-container *ngFor="let user of filteredUsers; let i = index; let o = odd; trackby: trackById">
         <tr class="user" [class.odd]="o" [class.compromised]="user.compromised" (click)="toggleCompromised()">
-            <td>{{ user.user_name }}</td> <td>{{ user.email }}</td> <td><mat-icon *ngIf="user.compromised" [svgIcon]="'heroicons_solid:key'"></mat-icon></td> <td>{{ user.date }}</td> <td><mat-icon (click)="customGet()" [svgIcon]="'heroicons_solid:user-group'"></mat-icon></td>
+            <td>{{ user.user_name }}</td> <td>{{ user.email }}</td> <td><mat-icon *ngIf="user.compromised" tooltip tooltipText="User need to update password click to contact them on linked socials" [svgIcon]="'heroicons_solid:key'"></mat-icon></td> <td>{{ user.date }}</td> <td><mat-icon (click)="customGet()" [svgIcon]="'heroicons_solid:user-group'"></mat-icon></td>
         </tr>
         </ng-container>
     </table>
