@@ -9,6 +9,7 @@ import { SelectModule } from './select/select.module';
 import { ClickOutsideDirectiveModule } from './directives/click-outside/click-outside.module';
 import { SuperDuperAnimationsModule } from './animations/animations.module';
 import { TooltipModule } from './tooltip/tooltip.module';
+import { MenuModule } from './menu/menu.module';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { TooltipModule } from './tooltip/tooltip.module';
     SelectModule,
     ClickOutsideDirectiveModule,
     SuperDuperAnimationsModule,
-    TooltipModule
+    TooltipModule,
+    MenuModule
   ],
   declarations: [
     BannerComponent,
@@ -33,6 +35,7 @@ import { TooltipModule } from './tooltip/tooltip.module';
     SuperDuperAnimationsModule,
     ClickOutsideDirectiveModule,
     TooltipModule,
+    MenuModule
   ],
 })
 export class CommonUiModule {}
